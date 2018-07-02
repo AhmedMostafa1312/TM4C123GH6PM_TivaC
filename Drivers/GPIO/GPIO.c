@@ -373,6 +373,90 @@ GPIO_Status GPIO_enInit(void)
     return Local_enReturnValue;
 }
 
+/* Function that gets the GPIO pin index from GPIO pin number provided by the user */
+static uint8 GPIO_u8GetPinIndex(uint8 Copy_u8GPIOPinNumber)
+{
+    /* Local variable that hold the return value */
+    uint8 Local_u8ReturnValue;
+
+    /* Local variable that hold the GPIO pin index */
+    uint8 Local_u8GPIOPinIndex;
+
+    /* Switch on the provided pin number */
+    switch(Copy_u8GPIOPinNumber)
+    {
+        case PIN_0:
+        {
+        	/* Pin index 0 */
+            Local_u8GPIOPinIndex=0;
+            Local_u8ReturnValue=Local_u8GPIOPinIndex;
+        }
+        break;
+
+        case PIN_1:
+        {
+        	/* Pin index 1 */
+            Local_u8GPIOPinIndex=1;
+            Local_u8ReturnValue=Local_u8GPIOPinIndex;
+        }
+        break;
+
+        case PIN_2:
+        {
+        	/* Pin index 2 */
+            Local_u8GPIOPinIndex=2;
+            Local_u8ReturnValue=Local_u8GPIOPinIndex;
+        }
+        break;
+
+        case PIN_3:
+        {
+        	/* Pin index 3 */
+            Local_u8GPIOPinIndex=3;
+            Local_u8ReturnValue=Local_u8GPIOPinIndex;
+        }
+        break;
+
+        case PIN_4:
+        {
+        	/* Pin index 4 */
+            Local_u8GPIOPinIndex=4;
+            Local_u8ReturnValue=Local_u8GPIOPinIndex;
+        }
+        break;
+
+        case PIN_5:
+        {
+        	/* Pin index 5 */
+            Local_u8GPIOPinIndex=5;
+            Local_u8ReturnValue=Local_u8GPIOPinIndex;
+        }
+        break;
+
+        case PIN_6:
+        {
+        	/* Pin index 6 */
+            Local_u8GPIOPinIndex=6;
+            Local_u8ReturnValue=Local_u8GPIOPinIndex;
+        }
+        break;
+
+        case PIN_7:
+        {
+        	/* Pin index 7 */
+            Local_u8GPIOPinIndex=7;
+            Local_u8ReturnValue=Local_u8GPIOPinIndex;
+        }
+        break;
+
+        default:
+        break;
+
+    }
+
+    return Local_u8ReturnValue;
+}
+
 /* Write function to GPIO port pins */
 GPIO_Status GPIO_enWrite(uint8 Copy_u8GroupNum,uint8 Copy_u8DataType)
 {
@@ -511,7 +595,7 @@ GPIO_Status GPIO_enRead(uint8 Copy_u8GroupNum,uint8* Copy_pu8DataType)
             if(Local_strConfigPtr->GPIO_Speed==LOW_SPEED)
             {
                 /* Read the data from the provided port pin */
-                *Copy_pu8DataType=GPIO_APB_DATA_R(Local_strConfigPtr->GPIO_PortID)&(Local_strConfigPtr->GPIO_PinNumber);
+                *Copy_pu8DataType=(GPIO_APB_DATA_R(Local_strConfigPtr->GPIO_PortID)&(Local_strConfigPtr->GPIO_PinNumber))>>(GPIO_u8GetPinIndex(Local_strConfigPtr->GPIO_PinNumber));
 
                 /* Return write done */
                 Local_enReturnValue=GPIO_OK;

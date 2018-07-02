@@ -83,8 +83,6 @@
 #define GPIO_AHB_AMSEL_R(GPIO_PORT_ID)   *((GPIO_RegAddType)(GPIO_R_AHB_BASE_ADD(GPIO_PORT_ID,GPIO_AMSEL_R_OFFSET)))
 #define GPIO_AHB_PCTL_R(GPIO_PORT_ID)    *((GPIO_RegAddType)(GPIO_R_AHB_BASE_ADD(GPIO_PORT_ID,GPIO_PCTL_R_OFFSET)))
 
-#define DEFAULT 0U
-
 /* Datatype volatile (to avoid compiler optimization) and constant (as the addresses are constants) */
 typedef volatile uint32* const GPIO_RegAddType;
 
@@ -251,6 +249,11 @@ extern const GPIO_ConfigStrType Gobal_strConfigArray[GPIO_NUM_OF_GROUPS];
  */
 GPIO_Status GPIO_enInit(void);
 
+
+/* Function that gets the GPIO pin index from GPIO pin number provided by the user
+ * Inputs : -pin number in the configuration array of structure : PIN_0 , PIN_1 , PIN_2 , ...
+ */
+static uint8 GPIO_u8GetPinIndex(uint8 Copy_u8GPIOPinNumber);
 
 
 /* Write function to GPIO port pins
