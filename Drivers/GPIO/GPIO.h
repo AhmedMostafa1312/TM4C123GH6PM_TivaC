@@ -252,6 +252,7 @@ GPIO_Status GPIO_enInit(void);
 
 /* Function that gets the GPIO pin index from GPIO pin number provided by the user
  * Inputs : -pin number in the configuration array of structure : PIN_0 , PIN_1 , PIN_2 , ...
+ * Outputs: GPIO pin index
  */
 static uint8 GPIO_u8GetPinIndex(uint8 Copy_u8GPIOPinNumber);
 
