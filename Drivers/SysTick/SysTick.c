@@ -79,7 +79,7 @@ SysTick_Status SysTick_enDelaySec(uint32 Copy_u32DelaySec)
     /* Variable to indicate the success of SysTick configuration */
     SysTick_Status Local_enReturnValue=SysTick_OK;
 
-    for(Local_u32LoopIndex=0;Local_u32LoopIndex<(60*Copy_u32DelaySec);++Local_u32LoopIndex)
+    for(Local_u32LoopIndex=0;Local_u32LoopIndex<Copy_u32DelaySec;++Local_u32LoopIndex)
     {
         /* Generation of 1 second */
         SysTick_enDelaymSec(1000);
