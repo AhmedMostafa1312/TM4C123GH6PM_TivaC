@@ -8,7 +8,6 @@
  */
 
 #include "SysTick.h"
-#include "GPIO.h"
 
 /* Initialization function of SysTick */
 SysTick_Status SysTick_enInit(void)
