@@ -89,11 +89,3 @@ SysTick_Status SysTick_enDelaySec(uint32 Copy_u32DelaySec)
 
     return Local_enReturnValue;
 }
-
-/* SysTick ISR
- * It must be configured in startup source file
- */
-void SysTick_ISR(void)
-{
-
-}
