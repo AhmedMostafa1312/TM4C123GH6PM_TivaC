@@ -81,6 +81,7 @@ SysTick_Status SysTick_enDelaySec(uint32 Copy_u32DelaySec)
 
     for(Local_u32LoopIndex=0;Local_u32LoopIndex<(60*Copy_u32DelaySec);++Local_u32LoopIndex)
     {
+        /* Generation of 1 second */
         SysTick_enDelaymSec(1000);
     }
 
