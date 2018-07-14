@@ -29,7 +29,6 @@ SysTick_Status SysTick_enInit(void)
 #else
     /* Disable SysTick interrupt */
     SYSTICK_STCTRL_R&=~0x02;
-
 #endif
 
     /* Clear SysTick current value */
