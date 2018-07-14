@@ -47,6 +47,12 @@ SysTick_Status SysTick_enInit(void);
 
 
 /* Function to make accurate delay
+ * Inputs : -Delay value by Microseconds
+ */
+SysTick_Status SysTick_enDelayuSec(uint32 Copy_u32Delayus);
+
+
+/* Function to make accurate delay
  * Inputs : -Delay value by Milliseconds
  */
 SysTick_Status SysTick_enDelaymSec(uint32 Copy_u32Delayms);

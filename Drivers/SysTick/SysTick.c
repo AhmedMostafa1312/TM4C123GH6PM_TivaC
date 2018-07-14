@@ -38,7 +38,39 @@ SysTick_Status SysTick_enInit(void)
 }
 
 /* Function to make accurate delay
- * Inputs : -Delay value by msec
+ * Inputs : -Delay value by Microseconds
+ */
+SysTick_Status SysTick_enDelayuSec(uint32 Copy_u32Delayus)
+{
+    uint32 Local_u32SysTickReloadValue;
+
+    /* Variable to indicate the success of SysTick configuration */
+    SysTick_Status Local_enReturnValue=SysTick_OK;
+
+    /* Clear SysTick current value to clear count flag */
+    SYSTICK_STCURRENT_R=0;
+
+    /* Calculate the reload value */
+    Local_u32SysTickReloadValue=(((Copy_u32Delayus)/1000000.0)/(1.0/16000000.0))-1;
+
+    /* Assign the reload value to SysTick reload register */
+    SYSTICK_STRELOAD_R=Local_u32SysTickReloadValue;
+
+    /* Start SysTick */
+    SYSTICK_STCTRL_R|=0x01;
+
+#if(SYSTICK_INT_ENABLE==DISABLE)
+    /* Polling on the count flag to be one */
+    while(((SYSTICK_STCTRL_R>>16)&0x01)==0);
+#endif
+
+    Local_enReturnValue=SysTick_OK;
+
+    return Local_enReturnValue;
+}
+
+/* Function to make accurate delay
+ * Inputs : -Delay value by Milliseconds
  */
 SysTick_Status SysTick_enDelaymSec(uint32 Copy_u32Delayms)
 {
@@ -70,7 +102,7 @@ SysTick_Status SysTick_enDelaymSec(uint32 Copy_u32Delayms)
 }
 
 /* Function to make accurate delay
- * Inputs : -Delay value by sec
+ * Inputs : -Delay value by seconds
  */
 SysTick_Status SysTick_enDelaySec(uint32 Copy_u32DelaySec)
 {
