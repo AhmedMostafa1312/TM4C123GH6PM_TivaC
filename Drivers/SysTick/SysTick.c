@@ -25,7 +25,6 @@ SysTick_Status SysTick_enInit(void)
 #if(SYSTICK_INT_ENABLE==ENABLE)
     /* Enable SysTick interrupt */
     SYSTICK_STCTRL_R|=0x02;
-
 #else
     /* Disable SysTick interrupt */
     SYSTICK_STCTRL_R&=~0x02;
